@@ -1,4 +1,3 @@
-// Product type representing the structure of a product fetched from FakeStoreAPI
 export type Product = {
   id: number;
   title: string;
@@ -6,19 +5,18 @@ export type Product = {
   description: string;
   category: string;
   image: string;
+  thumbnail: string;
   rating: {
     rate: number;
     count: number;
   };
 };
 
-// Cart item type representing a product added to the shopping cart
 export type CartItem = {
   product: Product;
   quantity: number;
 };
 
-// User type representing the structure of a user (optional for future expansion)
 export type User = {
   id: number;
   email: string;
@@ -41,7 +39,6 @@ export type User = {
   phone: string;
 };
 
-// Order type representing an order placed by a user (optional for future expansion)
 export type Order = {
   id: number;
   userId: number;
