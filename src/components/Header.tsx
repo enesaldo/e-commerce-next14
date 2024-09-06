@@ -1,4 +1,5 @@
 import Link from "next/link";
+import MobileMenu from "./MobileMenu";
 
 export default function Header() {
   return (
@@ -6,6 +7,7 @@ export default function Header() {
       <Link className="text-white font-bold text-2xl" href="/">
         E-Ticaret
       </Link>
+      <MobileMenu />
     </header>
   );
 }

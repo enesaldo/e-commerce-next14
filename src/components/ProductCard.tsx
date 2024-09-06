@@ -14,12 +14,17 @@ export default function ProductCard({ product }: any) {
       />
       <h2 className="text-lg font-semibold">{product.title}</h2>
       <p className="text-gray-500">{product.price} $</p>
-      <Link
-        href={`/product/${product.id}`}
-        className="mt-auto bg-primary text-white px-4 py-2  hover:bg-orange-600"
-      >
-        Detaylar
-      </Link>
+      <div className="flex justify-between items-center">
+        <Link
+          href={`/product/${product.id}`}
+          className=" bg-primary text-white px-4 py-2  hover:bg-orange-600"
+        >
+          Detaylar
+        </Link>
+        <button className="bg-orange-800 hover:bg-orange-700 w-8 h-8 text-white ">
+          +
+        </button>
+      </div>
     </div>
   );
 }
