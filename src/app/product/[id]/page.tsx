@@ -1,11 +1,7 @@
 import Image from "next/image";
-import { fetchProducts } from "../../../lib/ProductFetcher";
+import { Product, ProductPageProps } from "../../../lib/types";
 
-type ProductPageProps = {
-  params: {
-    id: string;
-  };
-};
+import { fetchProducts } from "../../../lib/ProductFetcher";
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const products = await fetchProducts();
@@ -20,7 +16,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         height={100}
         src={product.thumbnail}
         alt={product.title}
-        className="w-max h-max object-cover"
+        className="max-w-80  object-cover"
       />
       <h1 className="text-3xl font-bold mt-4">{product.title}</h1>
       <p className="text-xl text-primary font-semibold mt-2">

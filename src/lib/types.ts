@@ -12,6 +12,17 @@ export type Product = {
   };
 };
 
+export type SearchProps = {
+  searchParams: {
+    query: string;
+    page: string;
+  };
+};
+export type ProductPageProps = {
+  params: {
+    id: string;
+  };
+};
 export type CartItem = {
   product: Product;
   quantity: number;
