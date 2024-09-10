@@ -39,8 +39,8 @@ export default function Header() {
     }
   };
   return (
-    <div className="bg-primary w-full flex justify-between items-center h-32">
-      <header className=" p-4 flex mx-20 justify-between w-full items-center">
+    <div className="bg-primary w-full   items-center  px-4 flex-col pt-10 pb-4">
+      <div className="w-full grid grid-cols-8 container m-auto rows-span-2 ">
         <div className="">
           <Link
             className="text-white font-bold text-2xl w-max flex justify-center text-end items-center"
@@ -54,10 +54,10 @@ export default function Header() {
               priority={true}
               className="cursor-pointer w-12  "
             />
-            <h1 className="mr-20 justify-center">E-Shop</h1>
+            <h1 className=" justify-center">E-Shop</h1>
           </Link>
         </div>
-        <div className="w-full flex flex-col px-4">
+        <div className="w-full flex col-span-6 flex-col ">
           <form
             onSubmit={handleSearch}
             className="flex gap-2 justify-center  md:m-0 ml-10  w-full items-center"
@@ -71,31 +71,32 @@ export default function Header() {
             />
             <button
               type="submit"
-              className="sm:m-0 m-2 sm:p-2 p-0.5 sm:w-max w-full bg-orange-800 sm:text-base text-xs shadow-lg text-white rounded"
+              className="sm:m-0 m-2 sm:p-2  sm:w-max w-full bg-orange-800 sm:text-base text-xs shadow-lg text-white rounded"
             >
               Search
             </button>
           </form>
-          <div className="mt-4">
-            <div className="flex flex-wrap gap-2 mt-2">
-              {categories.map((category) => (
-                <span
-                  key={category.slug}
-                  className="px-3 py-1 bg-orange-200 rounded-lg text-sm"
-                >
-                  {category.name}
-                </span>
-              ))}
-            </div>
-          </div>
         </div>
-        <Link href="/ ">
+        <Link className="justify-end flex " href="/ ">
           <FontAwesomeIcon
             icon={faBasketShopping}
             className="text-white h-8 ml-10"
           />
         </Link>
-      </header>
+        <div className=" grid-rows-subgrid col-start-2 col-span-6 w-full">
+          <div className="flex flex-wrap gap-2 text-white mx-auto container ">
+            {categories.map((category) => (
+              <Link
+                key={category.slug}
+                href={`/category/${category.slug}`}
+                className="p-1  hover:bg-orange-800 rounded-lg text-xs"
+              >
+                {category.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
