@@ -37,3 +37,7 @@ export type Order = {
     quantity: number;
   }[];
 };
+export type Category = {
+  slug: string;
+  name: string;
+};

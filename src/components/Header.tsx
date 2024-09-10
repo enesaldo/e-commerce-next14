@@ -1,11 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import MobileMenu from "./MobileMenu";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
+import { fetchCategories } from "../lib/CategoriesFetcher";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Category } from "../lib/types";
+
 import {
   faBasketShopping,
   faCheck,
@@ -14,7 +16,21 @@ import {
 
 export default function Header() {
   const [query, setQuery] = useState<string>("");
+  const [categories, setCategories] = useState<Category[]>([]);
   const router = useRouter();
+
+  useEffect(() => {
+    const getCategories = async () => {
+      try {
+        const allCategories = await fetchCategories();
+        setCategories(allCategories.slice(0, 8));
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    };
+
+    getCategories();
+  }, []);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,11 +39,11 @@ export default function Header() {
     }
   };
   return (
-    <div className="bg-primary w-full flex justify-between items-center">
+    <div className="bg-primary w-full flex justify-between items-center h-32">
       <header className=" p-4 flex mx-20 justify-between w-full items-center">
         <div className="">
           <Link
-            className="text-white font-bold text-2xl w-max flex justify-end text-end items-end"
+            className="text-white font-bold text-2xl w-max flex justify-center text-end items-center"
             href="/"
           >
             <Image
@@ -36,15 +52,15 @@ export default function Header() {
               width={40}
               height={40}
               priority={true}
-              className="cursor-pointer   "
+              className="cursor-pointer w-12  "
             />
-            <h1 className="mr-20 justify-end">E-Shop</h1>
+            <h1 className="mr-20 justify-center">E-Shop</h1>
           </Link>
         </div>
-        <div className="w-full">
+        <div className="w-full flex flex-col px-4">
           <form
             onSubmit={handleSearch}
-            className="flex sm:flex-row gap-2 justify-center flex-col md:m-0 ml-10  w-full items-center"
+            className="flex gap-2 justify-center  md:m-0 ml-10  w-full items-center"
           >
             <input
               type="text"
@@ -60,6 +76,18 @@ export default function Header() {
               Search
             </button>
           </form>
+          <div className="mt-4">
+            <div className="flex flex-wrap gap-2 mt-2">
+              {categories.map((category) => (
+                <span
+                  key={category.slug}
+                  className="px-3 py-1 bg-orange-200 rounded-lg text-sm"
+                >
+                  {category.name}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
         <Link href="/ ">
           <FontAwesomeIcon
