@@ -7,7 +7,7 @@ export default function MobileMenu() {
 
   return (
     <div className="relative">
-      <button onClick={() => setIsOpen(!isOpen)} className="text-white">
+      <button onClick={() => setIsOpen(!isOpen)} className="">
         {isOpen ? "Kapat" : "Menu"}
       </button>
       {isOpen && (
