@@ -2,7 +2,6 @@
 
 import ProductCard from "@/components/ProductCard";
 import { Product, SearchProps } from "../../lib/types";
-import ProductCart from "@/components/ProductCard";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { searchProducts } from "../../lib/ProductFetcher";
