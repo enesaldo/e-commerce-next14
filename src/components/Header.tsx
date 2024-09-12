@@ -44,14 +44,17 @@ export default function Header() {
   };
 
   return (
-    <div className="bg-primary w-full items-center px-4 flex-col pt-10 pb-4">
-      <div className="w-full grid grid-cols-10 container m-auto  ">
-        <div className="flex gap-4 w-full col-span-2 ">
-          <button onClick={toggleMenu} className="text-white ">
-            <FontAwesomeIcon icon={faBars} className="h-6" />
+    <div className="bg-primary w-full items-center px-4 flex-col lg:pt-10 pt-2 pb-4">
+      <div className="w-full grid lg:grid-cols-10 grid-cols-2 row-span-2 container m-auto  ">
+        <div className="flex  w-full lg:col-span-2 col-span-1 ">
+          <button
+            onClick={toggleMenu}
+            className="text-white items-center flex "
+          >
+            <FontAwesomeIcon icon={faBars} className="md:h-6 h-4" />
           </button>
           <Link
-            className="text-white font-bold text-2xl col-span-2 w-max flex justify-center text-end items-center"
+            className="text-white font-bold text-2xl  w-max flex justify-center text-end items-center"
             href="/"
           >
             <Image
@@ -60,16 +63,16 @@ export default function Header() {
               width={40}
               height={40}
               priority={true}
-              className="cursor-pointer w-12"
+              className="cursor-pointer md:w-8 w-6 m-2"
             />
-            <h1 className="justify-center ">E-Shop</h1>
+            <h1 className="justify-center text-sm md:text-2xl">BuyerFe</h1>
           </Link>
         </div>
 
-        <div className="w-full flex col-span-7 flex-col">
+        <div className="w-full flex lg:col-span-7 col-span-2 flex-col">
           <form
             onSubmit={handleSearch}
-            className="flex gap-2 justify-center md:m-0 ml-10 w-full items-center"
+            className="flex flex-col lg:flex-row gap-2 justify-center md:ml-0  w-full r"
           >
             <input
               type="text"
@@ -80,7 +83,7 @@ export default function Header() {
             />
             <button
               type="submit"
-              className="sm:m-0 m-2 sm:p-2 sm:w-max w-full bg-orange-800 sm:text-base text-xs shadow-lg text-white rounded"
+              className=" p-2 md:w-max w-full bg-orange-800 sm:text-base text-xs shadow-lg text-white rounded"
             >
               Search
             </button>
@@ -93,7 +96,7 @@ export default function Header() {
             className="text-white h-8 ml-10"
           />
         </Link>
-        <div className=" grid col-span-6 col-start-3 w-full">
+        <div className="hidden lg:block col-span-6 col-start-3 w-full">
           <div className="flex flex-wrap gap-2 col-span-6  text-white mx-auto container ">
             {categories.map((category) => (
               <Link

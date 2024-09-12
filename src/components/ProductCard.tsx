@@ -6,7 +6,7 @@ export default function ProductCard({ product }: any) {
   return (
     <div
       className="
-     rounded-lg p-4 flex flex-col shadow-lg"
+     rounded-lg p-4 flex flex-col shadow-lg bg-white"
     >
       <Image
         height={100}

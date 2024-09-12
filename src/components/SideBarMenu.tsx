@@ -48,11 +48,11 @@ export default function Menu({ isOpen, closeMenu }: MenuProps) {
   return (
     <div
       ref={menuRef}
-      className="fixed top-0 left-0 h-full w-64 bg-orange-800 shadow-lg z-50"
+      className="fixed top-0 left-0 h-full overflow-y-auto w-64 bg-orange-800 shadow-lg z-50"
     >
       <h2 className="text-white text-xl font-bold p-4">Categories</h2>
-      <div className="overflow-y-auto h-full">
-        <div className="flex flex-col gap-2 p-4">
+      <div className=" h-full">
+        <div className="flex flex-col gap-2 p-4 m-4">
           {categories.map((category: any) => (
             <Link
               key={category.slug}
