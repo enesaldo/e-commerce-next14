@@ -2,6 +2,7 @@
 
 import ProductCard from "@/components/ProductCard";
 import { Product, SearchProps } from "../../lib/types";
+import ProductCart from "@/components/ProductCard";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { searchProducts } from "../../lib/ProductFetcher";
@@ -43,16 +44,13 @@ export default function SearchPage() {
         </div>
       ) : (
         <div className="container mx-auto">
-          <div className=" w-full shadow-lg h-16 items-center flex flex-row my-8 text-center ">
+          <div className=" w-full shadow-lg h-16 items-center bg-white flex flex-row my-8 text-center ">
             <div className="bg-primary w-2 h-full "> </div>
             <h1 className="text-2xl capitalize text-gray-400 font-bold px-10 ">
               Search Results for "{query}"
             </h1>
           </div>
-          <div
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5
-       gap-4"
-          >
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4 my-4">
             {products.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}

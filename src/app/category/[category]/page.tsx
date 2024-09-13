@@ -28,7 +28,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
 
   return (
     <div className="container mx-auto">
-      <div className=" w-full shadow-lg h-16 items-center flex flex-row my-8 text-center ">
+      <div className=" w-full shadow-lg h-16 items-center flex bg-white flex-row my-8 text-center ">
         <div className="bg-primary w-2 h-full "> </div>
         <h1 className="text-2xl capitalize text-gray-400 font-bold px-10 ">
           Products in {category}
@@ -37,7 +37,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
 
       <div
         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5
-       gap-4"
+       gap-4 my-4"
       >
         {products.map((product: Product) => (
           <ProductCard key={product.id} product={product} />

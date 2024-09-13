@@ -46,10 +46,10 @@ export default function Header() {
   return (
     <div className="bg-primary w-full items-center px-4 flex-col lg:pt-10 pt-2 pb-4">
       <div className="w-full grid lg:grid-cols-10 grid-cols-2 row-span-2 container m-auto  ">
-        <div className="flex  w-full lg:col-span-2 col-span-1 ">
+        <div className="flex  w-full lg:col-span-2 col-span-1 row-start-1">
           <button
             onClick={toggleMenu}
-            className="text-white items-center flex "
+            className="text-white items-center flex  "
           >
             <FontAwesomeIcon icon={faBars} className="md:h-6 h-4" />
           </button>
@@ -90,13 +90,16 @@ export default function Header() {
           </form>
         </div>
 
-        <Link className="justify-end flex" href="/ ">
+        <Link
+          className="justify-end lg:col-span-1 col-span-2 row-start-1 lg:row-auto flex "
+          href="/ "
+        >
           <FontAwesomeIcon
             icon={faBasketShopping}
-            className="text-white h-8 ml-10"
+            className="text-white h-8 ml-10 lg:w-12 w-6"
           />
         </Link>
-        <div className="hidden lg:block col-span-6 col-start-3 w-full">
+        <div className="hidden lg:block col-span-6 col-start-3  w-full">
           <div className="flex flex-wrap gap-2 col-span-6  text-white mx-auto container ">
             {categories.map((category) => (
               <Link
