@@ -92,7 +92,7 @@ export default function Header() {
 
         <Link
           className="justify-end lg:col-span-1 col-span-2 row-start-1 lg:row-auto flex "
-          href="/ "
+          href="/basket "
         >
           <FontAwesomeIcon
             icon={faBasketShopping}

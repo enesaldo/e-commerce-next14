@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { BasketProvider } from "../context/BasketContext";
 
 import "./globals.css";
 
@@ -23,9 +24,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-slate-100`}>
-        <Header />
-        {children}
-        <Footer />
+        <BasketProvider>
+          <Header />
+          {children}
+          <Footer />
+        </BasketProvider>
       </body>
     </html>
   );

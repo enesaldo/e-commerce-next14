@@ -1,8 +1,13 @@
+"use client";
+
 import Image from "next/image";
-import { Product } from "../lib/types";
 import Link from "next/link";
+import { useContext } from "react";
+import { BasketContext } from "../context/BasketContext";
 
 export default function ProductCard({ product }: any) {
+  const { addToBasket } = useContext(BasketContext);
+
   return (
     <div
       className="
@@ -24,7 +29,10 @@ export default function ProductCard({ product }: any) {
         >
           Detaylar
         </Link>
-        <button className="bg-orange-800 hover:bg-orange-700 w-8 h-8 text-white ">
+        <button
+          onClick={() => addToBasket(product)}
+          className="bg-orange-800 hover:bg-orange-700 w-8 h-8 text-white "
+        >
           +
         </button>
       </div>
