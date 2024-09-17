@@ -2,6 +2,7 @@
 
 import { createContext, useState, useEffect, ReactNode } from "react";
 import { Product } from "../lib/types";
+let _basket: BasketItem[] = [];
 
 interface BasketItem extends Product {
   quantity: number;
@@ -15,8 +16,14 @@ interface BasketContextType {
   updateQuantity: (id: number, quantity: number) => void;
 }
 
+if (typeof window !== "undefined") {
+  const basket = localStorage.getItem("basket");
+
+  _basket = basket ? JSON.parse(basket) : _basket;
+}
+
 export const BasketContext = createContext<BasketContextType>({
-  basket: [],
+  basket: _basket,
   addToBasket: (product: Product) => {},
   removeFromBasket: (id: number) => {},
   clearBasket: () => {},
@@ -24,7 +31,7 @@ export const BasketContext = createContext<BasketContextType>({
 });
 
 export const BasketProvider = ({ children }: { children: ReactNode }) => {
-  const [basket, setBasket] = useState<BasketItem[]>([]);
+  const [basket, setBasket] = useState<BasketItem[]>(_basket);
 
   useEffect(() => {
     const savedBasket = localStorage.getItem("basket");

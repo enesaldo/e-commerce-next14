@@ -9,12 +9,14 @@ import { faBasketShopping, faBars } from "@fortawesome/free-solid-svg-icons";
 import Menu from "./SideBarMenu";
 import { fetchCategories } from "@/lib/CategoriesFetcher";
 import { Category } from "../lib/types";
+import BasketSummary from "@/components/BasketSummary";
 
 export default function Header() {
   const [query, setQuery] = useState<string>("");
   const [isMenuOpen, setMenuOpen] = useState(false);
   const router = useRouter();
   const [categories, setCategories] = useState<Category[]>([]);
+  const [isHovering, setIsHovered] = useState(false);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,6 +44,8 @@ export default function Header() {
   const closeMenu = () => {
     setMenuOpen(false);
   };
+  const onMouseEnter = () => setIsHovered(true);
+  const onMouseLeave = () => setIsHovered(false);
 
   return (
     <div className="bg-primary w-full items-center px-4 flex-col lg:pt-10 pt-2 pb-4">
@@ -91,14 +95,18 @@ export default function Header() {
         </div>
 
         <Link
-          className="justify-end lg:col-span-1 col-span-2 row-start-1 lg:row-auto flex "
+          className="justify-end lg:col-span-1 col-span-2 row-start-1 lg:row-auto flex w-fit ml-auto"
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
           href="/basket "
         >
           <FontAwesomeIcon
             icon={faBasketShopping}
-            className="text-white h-8 ml-10 lg:w-12 w-6"
+            className="text-white h-8  lg:w-12 w-6"
           />
+          {isHovering ? <BasketSummary /> : ""}
         </Link>
+
         <div className="hidden lg:block col-span-6 col-start-3  w-full">
           <div className="flex flex-wrap gap-2 col-span-6  text-white mx-auto container ">
             {categories.map((category) => (

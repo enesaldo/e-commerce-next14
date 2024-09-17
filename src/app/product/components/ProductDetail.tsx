@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { BasketContext } from "../../../context/BasketContext";
 import { Product } from "../../../lib/types";
 import Image from "next/image";
@@ -28,12 +29,21 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
         <p className="text-xl text-primary font-semibold mt-2">
           {product.price} $
         </p>
-        <button
-          onClick={() => addToBasket(product)}
-          className="bg-primary hover:bg-orange-500  text-white mt-4 px-6 py-2 rounded"
-        >
-          Add to Basket
-        </button>
+        <div className="flex gap-6">
+          <button
+            onClick={() => addToBasket(product)}
+            className="text-orange-800 border hover:border-white border-orange-800 duration-100 hover:bg-orange-500 bg-orange-200  hover:text-white mt-4 px-6 py-2 rounded"
+          >
+            Add to Basket
+          </button>
+          <Link
+            href={"/basket"}
+            onClick={() => addToBasket(product)}
+            className="bg-primary hover:bg-orange-600 duration-100  text-white mt-4 px-6 py-2 rounded"
+          >
+            Purchase Now
+          </Link>
+        </div>
       </div>
     </div>
   );
