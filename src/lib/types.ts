@@ -23,20 +23,7 @@ export type ProductPageProps = {
     id: string;
   };
 };
-export type CartItem = {
-  product: Product;
-  quantity: number;
-};
 
-export type Order = {
-  id: number;
-  userId: number;
-  date: string;
-  products: {
-    productId: number;
-    quantity: number;
-  }[];
-};
 export type Category = {
   slug: string;
   name: string;

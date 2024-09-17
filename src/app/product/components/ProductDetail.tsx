@@ -30,7 +30,7 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
         onClick={() => addToBasket(product)}
         className="bg-primary hover:bg-orange-500 text-white mt-4 px-6 py-2 rounded"
       >
-        Sepete Ekle
+        Add to Basket
       </button>
     </div>
   );

@@ -6,11 +6,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const products = await fetchProducts();
   const product = products.find((p) => p.id === parseInt(params.id));
 
-  if (!product) return <div>Ürün bulunamadı</div>;
+  if (!product) return <div>Product not found</div>;
 
   return (
     <div>
-      <h1>Ürün Detayı</h1>
+      <h1>Product Detail</h1>
 
       <ProductDetail product={product} />
     </div>

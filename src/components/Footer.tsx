@@ -7,11 +7,11 @@ export default function Footer() {
         <Link href="/" className="text-uppercase">
           PRIVACY POLICY
         </Link>
-        <div className="vert-line"></div>
+        <div className="text-xs md:text-lg"></div>
         <Link href="/" className="text-uppercase">
           TERM OF SERVICE
         </Link>
-        <div className="vert-line"></div>
+        <div className="text-xs md:text-lg"></div>
         <Link href="/" className="text-uppercase">
           ABOUT BuyerFe.
         </Link>

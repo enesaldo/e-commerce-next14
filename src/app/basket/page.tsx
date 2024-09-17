@@ -18,14 +18,14 @@ const CartPage = () => {
   if (basket.length === 0) {
     return (
       <p className="min-h-screen text-center text-xl font-semibold mt-10">
-        Sepetiniz boş.
+        your basket is empty
       </p>
     );
   }
 
   return (
     <div className="py-6 min-h-screen text-slate-500 container mx-auto">
-      <h1 className="text-3xl font-bold mb-6">Sepetiniz</h1>
+      <h1 className="text-3xl font-bold mb-6">Your Basket</h1>
 
       <div className="grid bg-white  grid-cols-6 gap-4 font-bold">
         <div>Seria Number</div>

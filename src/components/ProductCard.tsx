@@ -27,7 +27,7 @@ export default function ProductCard({ product }: any) {
           href={`/product/${product.id}`}
           className=" bg-primary text-white px-4 py-2  hover:bg-orange-600"
         >
-          Detaylar
+          Details
         </Link>
         <button
           onClick={() => addToBasket(product)}
