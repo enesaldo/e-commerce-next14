@@ -1,6 +1,8 @@
 "use client";
 
 import { createContext, useState, useEffect, ReactNode } from "react";
+import { toast } from "react-hot-toast";
+
 import { Product } from "../lib/types";
 let _basket: BasketItem[] = [];
 
@@ -49,16 +51,17 @@ export const BasketProvider = ({ children }: { children: ReactNode }) => {
   }, [basket]);
 
   const addToBasket = (product: Product) => {
-    setBasket((prevBasket) => {
-      const itemIndex = prevBasket.findIndex((item) => item.id === product.id);
-      if (itemIndex !== -1) {
-        const updatedBasket = [...prevBasket];
-        updatedBasket[itemIndex].quantity += 1;
-        return updatedBasket;
-      } else {
-        return [...prevBasket, { ...product, quantity: 1 }];
-      }
-    });
+    toast.success("You did it!");
+    console.log(product.id);
+
+    const itemIndex = basket.findIndex((item) => item.id === product.id);
+    if (itemIndex !== -1) {
+      const updatedBasket = [...basket];
+      updatedBasket[itemIndex].quantity += 1;
+      setBasket(updatedBasket);
+    } else {
+      setBasket([...basket, { ...product, quantity: 1 }]);
+    }
   };
 
   const updateQuantity = (id: number, quantity: number) => {

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { Toaster } from "react-hot-toast";
 import { BasketProvider } from "../context/BasketContext";
 
 import "./globals.css";
@@ -26,6 +27,7 @@ export default function RootLayout({
       <body className={`${inter.className} bg-slate-100`}>
         <BasketProvider>
           <Header />
+          <Toaster position="top-right" />
           {children}
           <Footer />
         </BasketProvider>

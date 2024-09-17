@@ -27,7 +27,7 @@ const CartPage = () => {
     <div className="py-6 min-h-screen text-slate-500 container mx-auto">
       <h1 className="text-3xl font-bold mb-6">Your Basket</h1>
 
-      <div className="grid bg-white  grid-cols-6 gap-4 font-bold">
+      <div className="grid  grid-cols-6 gap-4 font-bold">
         <div>Seria Number</div>
         <div>Product Name</div>
         <div>Unit Price</div>
