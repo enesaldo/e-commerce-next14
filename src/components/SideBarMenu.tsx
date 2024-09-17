@@ -48,7 +48,7 @@ export default function Menu({ isOpen, closeMenu }: MenuProps) {
   return (
     <div
       ref={menuRef}
-      className="fixed top-0 left-0 h-full overflow-y-auto w-64 bg-white shadow-lg z-50"
+      className="fixed top-0 left-0 h-full overflow-y-auto md:w-64 w-40 bg-white shadow-lg z-50"
     >
       <h2 className=" text-xl font-bold p-4">Categories</h2>
       <div className=" h-full">

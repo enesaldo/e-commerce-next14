@@ -50,7 +50,7 @@ export default function SearchPage() {
               Search Results for "{query}"
             </h1>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4 my-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-4 my-4">
             {products.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}

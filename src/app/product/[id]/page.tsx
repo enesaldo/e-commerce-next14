@@ -10,8 +10,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   return (
     <div>
-      <h1>Product Detail</h1>
-
       <ProductDetail product={product} />
     </div>
   );

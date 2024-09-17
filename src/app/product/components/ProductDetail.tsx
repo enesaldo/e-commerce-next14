@@ -13,25 +13,28 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
   const { addToBasket } = useContext(BasketContext);
 
   return (
-    <div className="p-6">
+    <div className="p-6 flex">
       <Image
         width={100}
         height={100}
         src={product.thumbnail}
         alt={product.title}
-        className="max-w-80 object-cover"
+        className="object-cover w-1/2"
       />
-      <h1 className="text-3xl font-bold mt-4">{product.title}</h1>
-      <p className="text-xl text-primary font-semibold mt-2">
-        {product.price} $
-      </p>
-      <p className="mt-4">{product.description}</p>
-      <button
-        onClick={() => addToBasket(product)}
-        className="bg-primary hover:bg-orange-500 text-white mt-4 px-6 py-2 rounded"
-      >
-        Add to Basket
-      </button>
+      <div className="space-y-6 mt-10">
+        <h1 className="text-3xl font-bold mt-4">{product.title}</h1>
+
+        <p className="mt-4">{product.description}</p>
+        <p className="text-xl text-primary font-semibold mt-2">
+          {product.price} $
+        </p>
+        <button
+          onClick={() => addToBasket(product)}
+          className="bg-primary hover:bg-orange-500  text-white mt-4 px-6 py-2 rounded"
+        >
+          Add to Basket
+        </button>
+      </div>
     </div>
   );
 };

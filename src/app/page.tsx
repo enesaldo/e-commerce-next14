@@ -9,7 +9,7 @@ export default async function Home() {
     <div className="container mx-auto py-4">
       <div className=" w-full shadow-lg h-16 items-center flex bg-white flex-row my-8 text-center ">
         <div className="bg-primary w-2 h-full "> </div>
-        <h1 className="text-2xl capitalize text-gray-400 font-bold px-10 ">
+        <h1 className="md:text-2xl  text-md capitalize text-gray-400 font-bold px-10 ">
           See Our Products
         </h1>
       </div>

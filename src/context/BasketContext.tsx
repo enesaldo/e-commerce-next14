@@ -38,9 +38,7 @@ export const BasketProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   useEffect(() => {
-    if (basket.length > 0) {
-      localStorage.setItem("basket", JSON.stringify(basket));
-    }
+    localStorage.setItem("basket", JSON.stringify(basket));
   }, [basket]);
 
   const addToBasket = (product: Product) => {
@@ -65,12 +63,10 @@ export const BasketProvider = ({ children }: { children: ReactNode }) => {
   };
   const removeFromBasket = (id: number) => {
     setBasket((prevBasket) => prevBasket.filter((item) => item.id !== id));
-    localStorage.clear();
   };
 
   const clearBasket = () => {
     setBasket([]);
-    localStorage.clear();
   };
 
   return (

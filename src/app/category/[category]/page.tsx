@@ -30,13 +30,13 @@ export default function CategoryPage({ params }: CategoryPageProps) {
     <div className="container mx-auto">
       <div className=" w-full shadow-lg h-16 items-center flex bg-white flex-row my-8 text-center ">
         <div className="bg-primary w-2 h-full "> </div>
-        <h1 className="text-2xl capitalize text-gray-400 font-bold px-10 ">
+        <h1 className="md:text-2xl  text-md capitalize text-gray-400 font-bold px-10 ">
           Products in {category}
         </h1>
       </div>
 
       <div
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6
        gap-4 my-4"
       >
         {products.map((product: Product) => (
