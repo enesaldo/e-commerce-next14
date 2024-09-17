@@ -65,10 +65,12 @@ export const BasketProvider = ({ children }: { children: ReactNode }) => {
   };
   const removeFromBasket = (id: number) => {
     setBasket((prevBasket) => prevBasket.filter((item) => item.id !== id));
+    localStorage.clear();
   };
 
   const clearBasket = () => {
     setBasket([]);
+    localStorage.clear();
   };
 
   return (
