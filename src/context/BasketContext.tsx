@@ -51,7 +51,7 @@ export const BasketProvider = ({ children }: { children: ReactNode }) => {
   }, [basket]);
 
   const addToBasket = (product: Product) => {
-    toast.success("You did it!");
+    toast.success("successful!");
     console.log(product.id);
 
     const itemIndex = basket.findIndex((item) => item.id === product.id);

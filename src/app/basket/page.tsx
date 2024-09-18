@@ -20,7 +20,7 @@ const CartPage = () => {
 
   if (basket.length === 0) {
     return (
-      <div className="min-h-screen   text-center mx-auto container text-xl font-semibold mt-10">
+      <div className="h-dvh text-center mx-auto container text-xl font-semibold mt-10">
         <div className="flex lg:flex-row flex-col justify-between border p-6 rounded-lg">
           <div className="flex text-center items-center gap-6">
             <FontAwesomeIcon
@@ -43,12 +43,12 @@ const CartPage = () => {
   }
 
   return (
-    <div className="py-6 min-h-screen text-slate-500 container mx-auto">
+    <div className="py-6  text-slate-500 container mx-auto">
       <h1 className="text-3xl font-bold mb-6">Your Basket</h1>
 
-      <div className="grid  grid-cols-6 gap-4 font-bold">
+      <div className="grid  grid-cols-7 gap-4 font-bold">
         <div>Seria Number</div>
-        <div>Product Name</div>
+        <div className="col-span-2">Product Name</div>
         <div>Unit Price</div>
         <div>Quantity</div>
         <div>Total Price</div>
@@ -57,9 +57,9 @@ const CartPage = () => {
 
       <div className="mt-4">
         {basket.map((item, index) => (
-          <div key={item.id} className="grid grid-cols-6 gap-4 py-2 border-b">
+          <div key={item.id} className="grid grid-cols-7 gap-4 py-2 border-b ">
             <div>{index + 1}</div>
-            <div>{item.title}</div>
+            <div className="col-span-2 truncate">{item.title}</div>
             <div className="text-primary">{item.price} $</div>
             <div className="flex items-center text-center space-x-2">
               <button
