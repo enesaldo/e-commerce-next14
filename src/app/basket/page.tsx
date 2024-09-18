@@ -2,6 +2,9 @@
 
 import { useContext } from "react";
 import { BasketContext } from "../../context/BasketContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 const CartPage = () => {
   const { basket, removeFromBasket, clearBasket, updateQuantity } =
@@ -17,9 +20,25 @@ const CartPage = () => {
 
   if (basket.length === 0) {
     return (
-      <p className="min-h-screen text-center text-xl font-semibold mt-10">
-        your basket is empty
-      </p>
+      <div className="min-h-screen   text-center mx-auto container text-xl font-semibold mt-10">
+        <div className="flex lg:flex-row flex-col justify-between border p-6 rounded-lg">
+          <div className="flex text-center items-center gap-6">
+            <FontAwesomeIcon
+              icon={faCartShopping}
+              className="  rounded-full p-6 text-orange-600 bg-orange-200 "
+            />
+            <p>Your Basket Is Empty</p>
+          </div>
+          <div className="text-center justify-center items-center flex  text-white">
+            <Link
+              href={"/"}
+              className="bg-orange-600 hover:bg-orange-400 duration-100 lg:w-96 w-max rounded-lg h-max p-4"
+            >
+              Go Shopping
+            </Link>
+          </div>
+        </div>
+      </div>
     );
   }
 
