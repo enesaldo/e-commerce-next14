@@ -12,6 +12,14 @@ export async function fetchProducts(): Promise<Product[]> {
     throw new Error("Failed to fetch products");
   }
 }
+export async function fetchProduct(id: string | number) {
+  const response = await fetch(`https://dummyjson.com/products/${id}`);
+  if (!response.ok) {
+    throw new Error("Product not found.");
+  }
+  const product = await response.json();
+  return product;
+}
 
 export async function searchProducts(query: string): Promise<Product[]> {
   try {
