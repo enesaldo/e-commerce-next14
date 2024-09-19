@@ -12,8 +12,8 @@ const CartPage = () => {
 
   let totalPrice: number = 0;
 
-  for (let i = 0; i < basket.length; i++) {
-    totalPrice += basket[i].price * basket[i].quantity;
+  for (const product of basket) {
+    totalPrice += product.price * product.quantity;
   }
 
   const totalPriceFormat: string = totalPrice.toFixed(2);

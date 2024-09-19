@@ -1,7 +1,5 @@
-"use client";
 import { ProductsByCategoryFetcher } from "../../../lib/ProductsByCategoryFetcher";
 import { Product } from "@/lib/types";
-import { useState, useEffect } from "react";
 import ProductCard from "@/components/ProductCard";
 
 type CategoryPageProps = {
@@ -10,21 +8,10 @@ type CategoryPageProps = {
   };
 };
 
-export default function CategoryPage({ params }: CategoryPageProps) {
+export default async function CategoryPage({ params }: CategoryPageProps) {
   const { category } = params;
-  const [products, setProducts] = useState<Product[]>([]);
 
-  useEffect(() => {
-    const getProducts = async () => {
-      try {
-        const categoryProducts = await ProductsByCategoryFetcher(category);
-        setProducts(categoryProducts);
-      } catch (error) {
-        console.error("Error fetching products for category:", error);
-      }
-    };
-    getProducts();
-  }, [category]);
+  const products = await ProductsByCategoryFetcher(category);
 
   return (
     <div className="container mx-auto">

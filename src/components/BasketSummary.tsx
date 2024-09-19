@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { BasketContext } from "../context/BasketContext";
 import Link from "next/link";
 import Image from "next/image";
@@ -10,8 +10,8 @@ const BasketSummery = () => {
 
   let totalPrice: number = 0;
 
-  for (let i = 0; i < basket.length; i++) {
-    totalPrice += basket[i].price * basket[i].quantity;
+  for (const product of basket) {
+    totalPrice += product.price * product.quantity;
   }
 
   if (basket.length === 0) {
