@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { BasketContext } from "../context/BasketContext";
 import Link from "next/link";
 import Image from "next/image";
-
+import { currencyFormatter } from "../utils";
 const BasketSummery = () => {
   const { basket } = useContext(BasketContext);
 
@@ -42,11 +42,13 @@ const BasketSummery = () => {
             <div>{item.title}</div>
             <div> {item.quantity}</div>
 
-            <div className="text-primary">{item.price} $</div>
+            <div className="text-primary">{currencyFormatter(item.price)}</div>
           </div>
         ))}
       </div>
-
+      <div className="flex justify-end text-lg p-4 text-primary">
+        {currencyFormatter(totalPrice)}
+      </div>
       <div className="flex justify-center mt-8  ">
         <Link
           className=" bg-primary p-2 rounded hover:bg-orange-700 duration-100 text-white w-max"

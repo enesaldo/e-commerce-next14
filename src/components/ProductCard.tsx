@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
 import { BasketContext } from "../context/BasketContext";
+import { currencyFormatter } from "../utils";
 
 export default function ProductCard({ product }: any) {
   const { addToBasket } = useContext(BasketContext);
@@ -28,7 +29,7 @@ export default function ProductCard({ product }: any) {
         </div>
       </Link>
       <div className="flex justify-between items-center">
-        <p className="text-gray-500">{product.price} $</p>
+        <p className="text-gray-500">{currencyFormatter(product.price)}</p>
 
         <button
           onClick={() => addToBasket(product)}

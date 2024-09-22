@@ -5,7 +5,7 @@ import { BasketContext } from "../../../context/BasketContext";
 import { Product } from "../../../lib/types";
 import Image from "next/image";
 import { useContext } from "react";
-
+import { currencyFormatter } from "../../../utils";
 interface ProductDetailProps {
   product: Product;
 }
@@ -27,7 +27,7 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
 
         <p className="mt-4">{product.description}</p>
         <p className="text-xl text-primary font-semibold mt-2">
-          {product.price} $
+          {currencyFormatter(product.price)}
         </p>
         <div className="flex gap-6">
           <button

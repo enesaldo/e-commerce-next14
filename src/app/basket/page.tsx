@@ -4,6 +4,8 @@ import { useContext } from "react";
 import { BasketContext } from "../../context/BasketContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { currencyFormatter } from "../../utils";
+
 import Link from "next/link";
 
 const CartPage = () => {
@@ -15,8 +17,6 @@ const CartPage = () => {
   for (const product of basket) {
     totalPrice += product.price * product.quantity;
   }
-
-  const totalPriceFormat: string = totalPrice.toFixed(2);
 
   if (basket.length === 0) {
     return (
@@ -44,7 +44,9 @@ const CartPage = () => {
 
   return (
     <div className="py-6  text-slate-500 container mx-auto">
-      <h1 className="text-3xl font-bold mb-6">Your Basket</h1>
+      <div>
+        <div className="text-3xl font-bold mb-6">Your Basket</div>
+      </div>
 
       <div className="grid  grid-cols-7 gap-4 font-bold">
         <div>Seria Number</div>
@@ -60,24 +62,24 @@ const CartPage = () => {
           <div key={item.id} className="grid grid-cols-7 gap-4 py-2 border-b ">
             <div>{index + 1}</div>
             <div className="col-span-2 truncate">{item.title}</div>
-            <div className="text-primary">{item.price} $</div>
+            <div className="text-primary">{currencyFormatter(item.price)}</div>
             <div className="flex items-center text-center space-x-2">
               <button
                 onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                className=" text-white bg-orange-500 px-2 rounded"
+                className=" text-white bg-orange-500 px-2 rounded transition-transform duration-150 transform hover:scale-110"
               >
                 -
               </button>
               <span className="w-10 flex justify-center">{item.quantity}</span>
               <button
                 onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                className=" text-white bg-orange-500 px-2 rounded"
+                className=" text-white bg-orange-500 px-2 rounded transition-transform duration-150 transform hover:scale-110"
               >
                 +
               </button>
             </div>
             <div className="text-primary">
-              {(item.price * item.quantity).toFixed(2)} $
+              {currencyFormatter(item.price * item.quantity)}
             </div>
             <button
               onClick={() => removeFromBasket(item.id)}
@@ -98,7 +100,7 @@ const CartPage = () => {
         </button>
 
         <div className="text-xl text-primary font-bold">
-          Total Price: {totalPriceFormat} $
+          Total Price: {currencyFormatter(totalPrice)}
         </div>
       </div>
     </div>
