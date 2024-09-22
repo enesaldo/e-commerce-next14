@@ -28,7 +28,7 @@ const BasketSummery = () => {
         {basket.map((item) => (
           <div
             key={item.id}
-            className="grid grid-cols-3 border-b text-xs gap-4 justify-center items-center"
+            className="grid grid-cols-4 border-b text-xs gap-4 justify-center items-center"
           >
             <div>
               <Image
@@ -40,6 +40,8 @@ const BasketSummery = () => {
               />
             </div>
             <div>{item.title}</div>
+            <div> {item.quantity}</div>
+
             <div className="text-primary">{item.price} $</div>
           </div>
         ))}
