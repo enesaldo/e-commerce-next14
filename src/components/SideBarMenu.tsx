@@ -53,7 +53,7 @@ export default function Menu({ isOpen, closeMenu }: MenuProps) {
       <h2 className=" text-xl font-bold p-4">Categories</h2>
       <div className=" h-full">
         <div className="flex flex-col gap-2 p-4 ">
-          {categories.map((category: any) => (
+          {categories.map((category: Category) => (
             <Link
               key={category.slug}
               href={`/category/${category.slug}`}

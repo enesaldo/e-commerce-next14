@@ -2,11 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { Product } from "../lib/types";
 import { useContext } from "react";
 import { BasketContext } from "../context/BasketContext";
 import { currencyFormatter } from "../utils";
 
-export default function ProductCard({ product }: any) {
+export default function ProductCard({ product }: { product: Product }) {
   const { addToBasket } = useContext(BasketContext);
 
   return (
