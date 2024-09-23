@@ -19,7 +19,7 @@ const BasketSummery = () => {
   }
 
   return (
-    <div className="py-6 max-h-80 shadow-lg w-80 bg-white text-slate-500 container mx-auto top-20 right-20 overflow-y-auto z-50 absolute ">
+    <div className="py-6 max-h-80 shadow-lg w-80 bg-white text-slate-500 container mx-auto lg:top-20 lg:right-20 top-10 right-0 overflow-y-auto z-50 absolute ">
       <h1 className="text-lg font-bold mb-6 justify-center flex">
         Recently Added Products
       </h1>

@@ -33,7 +33,7 @@ function SearchResults() {
   }, [query]);
 
   return (
-    <div>
+    <div className="container mx-auto">
       {errorMessage ? (
         <div className="flex justify-center items-center text-center h-64">
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 items-center rounded relative max-w-xl text-center shadow-lg">
@@ -42,7 +42,7 @@ function SearchResults() {
           </div>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-4 my-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 my-4">
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
