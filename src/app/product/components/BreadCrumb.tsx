@@ -7,7 +7,7 @@ interface BreadcrumbProps {
 
 const BreadCrumb = ({ category, productName }: BreadcrumbProps) => {
   return (
-    <nav className="container mx-auto w-full text-sm text-gray-600 mb-4">
+    <nav className="text-sm text-gray-600 mb-4">
       <div className="flex items-center space-x-2">
         <div>
           <Link href="/">
