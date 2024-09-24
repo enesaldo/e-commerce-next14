@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBasketShopping, faBars } from "@fortawesome/free-solid-svg-icons";
@@ -10,6 +10,7 @@ import Menu from "./SideBarMenu";
 import { fetchCategories } from "@/lib/CategoriesFetcher";
 import { Category } from "../lib/types";
 import BasketSummary from "@/components/BasketSummary";
+import { BasketContext } from "@/context/BasketContext";
 
 export default function Header() {
   const [query, setQuery] = useState<string>("");
@@ -18,12 +19,16 @@ export default function Header() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [isHovering, setIsHovered] = useState(false);
 
+  const { basket } = useContext(BasketContext);
+  const itemCount = basket.reduce((total, item) => total + item.quantity, 0);
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (query.trim()) {
       router.push(`/search?query=${query}`);
     }
   };
+
   useEffect(() => {
     const getCategories = async () => {
       try {
@@ -44,6 +49,7 @@ export default function Header() {
   const closeMenu = () => {
     setMenuOpen(false);
   };
+
   const onMouseEnter = () => setIsHovered(true);
   const onMouseLeave = () => setIsHovered(false);
 
@@ -69,14 +75,14 @@ export default function Header() {
               priority={true}
               className="cursor-pointer md:w-8 w-6 m-2"
             />
-            <h1 className="justify-center text-sm md:text-2xl">BuyerFe</h1>
+            <h1 className="justify-center text-xl md:text-2xl">BuyerFe</h1>
           </Link>
         </div>
 
         <div className="w-full flex lg:col-span-7 col-span-2 flex-col">
           <form
             onSubmit={handleSearch}
-            className="flex flex-col lg:flex-row gap-2 justify-center md:ml-0  w-full r"
+            className="flex flex-col lg:flex-row gap-2 justify-center md:ml-0  w-full"
           >
             <input
               type="text"
@@ -95,25 +101,30 @@ export default function Header() {
         </div>
 
         <Link
-          className="justify-end lg:col-span-1 col-span-2 row-start-1 lg:row-auto flex w-fit ml-auto"
+          className="justify-end lg:col-span-1 col-span-2 row-start-1 lg:row-auto flex w-fit ml-auto relative" // relative class ekleniyor
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
-          href="/basket "
+          href="/basket"
         >
           <FontAwesomeIcon
             icon={faBasketShopping}
-            className="text-white h-8  lg:w-12 w-6"
+            className="text-white h-8 lg:w-12 w-20"
           />
+          {itemCount > 0 && (
+            <span className="absolute lg:-top-1 top-0 lg:-right-1 right-5 rounded-full text-sm bg-orange-700 text-white  px-1">
+              {itemCount}
+            </span>
+          )}
           {isHovering ? <BasketSummary /> : ""}
         </Link>
 
-        <div className="hidden lg:block col-span-6 col-start-3  w-full">
-          <div className="flex flex-wrap gap-2 col-span-6  text-white mx-auto container ">
+        <div className="hidden lg:block col-span-6 col-start-3 w-full">
+          <div className="flex flex-wrap gap-2 col-span-6 text-white mx-auto container ">
             {categories.map((category) => (
               <Link
                 key={category.slug}
                 href={`/category/${category.slug}`}
-                className="p-1  hover:bg-orange-800 rounded-lg text-xs"
+                className="p-1 hover:bg-orange-800 rounded-lg text-xs"
               >
                 {category.name}
               </Link>
