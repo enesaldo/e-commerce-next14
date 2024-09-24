@@ -5,7 +5,11 @@ import { useRouter } from "next/navigation";
 import { useState, useEffect, useContext } from "react";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBasketShopping, faBars } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBasketShopping,
+  faBars,
+  faMagnifyingGlass,
+} from "@fortawesome/free-solid-svg-icons";
 import Menu from "./SideBarMenu";
 import { fetchCategories } from "@/lib/CategoriesFetcher";
 import { Category } from "../lib/types";
@@ -79,10 +83,10 @@ export default function Header() {
           </Link>
         </div>
 
-        <div className="w-full flex lg:col-span-7 col-span-2 flex-col">
+        <div className="w-full  lg:col-span-7 col-span-2 ">
           <form
             onSubmit={handleSearch}
-            className="flex flex-col lg:flex-row gap-2 justify-center md:ml-0  w-full"
+            className="flex lg:flex-row gap-2 justify-center md:ml-0  w-full"
           >
             <input
               type="text"
@@ -93,25 +97,29 @@ export default function Header() {
             />
             <button
               type="submit"
-              className=" p-2 md:w-max w-full bg-orange-800 sm:text-base text-xs shadow-lg text-white rounded"
+              className=" flex items-center p-2 w-max bg-orange-800 sm:text-base text-xs shadow-lg text-white rounded"
             >
-              Search
+              <FontAwesomeIcon
+                icon={faMagnifyingGlass}
+                className="h-4 w-4 mr-2"
+              />
+              <span className=" hidden lg:block">Search </span>
             </button>
           </form>
         </div>
 
         <Link
-          className="justify-end lg:col-span-1 col-span-2 row-start-1 lg:row-auto flex w-fit ml-auto relative" // relative class ekleniyor
+          className="  row-start-1  lg:row-auto flex w-fit ml-auto relative"
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
           href="/basket"
         >
           <FontAwesomeIcon
             icon={faBasketShopping}
-            className="text-white h-8 lg:w-12 w-20"
+            className="text-white h-8 lg:w-12 w-max"
           />
           {itemCount > 0 && (
-            <span className="absolute lg:-top-1 top-0 lg:-right-1 right-5 rounded-full text-sm bg-orange-700 text-white  px-1">
+            <span className="absolute lg:-top-1 top-0 -right-1  rounded-full text-sm bg-orange-700 text-white  px-1">
               {itemCount}
             </span>
           )}
