@@ -5,7 +5,7 @@ import { BasketContext } from "../context/BasketContext";
 import Link from "next/link";
 import Image from "next/image";
 import { currencyFormatter } from "../utils";
-const BasketSummery = () => {
+const BasketSummary = () => {
   const { basket } = useContext(BasketContext);
 
   let totalPrice: number = 0;
@@ -19,7 +19,7 @@ const BasketSummery = () => {
   }
 
   return (
-    <div className="py-6 max-h-80 shadow-lg w-80 bg-white text-slate-500 container mx-auto lg:top-20 lg:right-20 top-10 right-0 overflow-y-auto z-50 absolute ">
+    <div className="lg:block hidden py-6 max-h-80 shadow-lg w-80 bg-white text-slate-500 container mx-auto lg:top-20 lg:right-20 top-10 right-0 overflow-y-auto z-50 absolute ">
       <h1 className="text-lg font-bold mb-6 justify-center flex">
         Recently Added Products
       </h1>
@@ -62,4 +62,4 @@ const BasketSummery = () => {
   );
 };
 
-export default BasketSummery;
+export default BasketSummary;
