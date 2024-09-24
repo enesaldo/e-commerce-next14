@@ -6,6 +6,8 @@ import { Product } from "../../../lib/types";
 import Image from "next/image";
 import { useContext } from "react";
 import { currencyFormatter } from "../../../utils";
+import Breadcrumb from "../components/BreadCrumb";
+
 interface ProductDetailProps {
   product: Product;
 }
@@ -13,18 +15,22 @@ interface ProductDetailProps {
 const ProductDetail = ({ product }: ProductDetailProps) => {
   const { addToBasket } = useContext(BasketContext);
 
+  const category = product.category || "Unknown";
+
   return (
     <div className="p-6 flex flex-col lg:flex-row">
-      <Image
-        width={100}
-        height={100}
-        src={product.thumbnail}
-        alt={product.title}
-        className="object-cover w-full lg:w-1/2"
-      />
+      <div className="w-full lg:w-1/2 mx-auto container">
+        <Breadcrumb category={category} productName={product.title} />
+        <Image
+          width={100}
+          height={100}
+          src={product.thumbnail}
+          alt={product.title}
+          className="object-cover w-full"
+        />
+      </div>
       <div className="space-y-6 mt-10">
         <h1 className="text-3xl font-bold mt-4">{product.title}</h1>
-
         <p className="mt-4">{product.description}</p>
         <p className="text-xl text-primary font-semibold mt-2">
           {currencyFormatter(product.price)}
