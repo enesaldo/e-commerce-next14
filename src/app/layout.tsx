@@ -29,7 +29,7 @@ export default function RootLayout({
       >
         <BasketProvider>
           <Header />
-          <Toaster position="top-right" />
+          <Toaster position="bottom-right" />
           <main className="grow"> {children}</main>
           <Footer />
         </BasketProvider>
