@@ -6,7 +6,7 @@ export default async function Home() {
   const products: Product[] = await fetchProducts();
 
   return (
-    <div className="container mx-auto py-4">
+    <div className="container mx-auto lg:py-4 p-6">
       <div className=" w-full shadow-lg h-16 items-center flex bg-white flex-row my-8 text-center ">
         <div className="bg-primary w-2 h-full "> </div>
         <h1 className="md:text-2xl  text-md capitalize text-gray-400 font-bold px-10 ">

@@ -3,7 +3,7 @@
 import { useContext } from "react";
 import { BasketContext } from "../../context/BasketContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { currencyFormatter } from "../../utils";
 
 import Link from "next/link";
@@ -111,7 +111,7 @@ const CartPage = () => {
                 onClick={() => removeFromBasket(item.id)}
                 className="bg-red-500 text-white px-4 py-1 rounded mt-2 lg:mt-0"
               >
-                Delete
+                <FontAwesomeIcon icon={faTrash} className="text-white" />
               </button>
             </div>
           </div>
@@ -123,7 +123,7 @@ const CartPage = () => {
           onClick={clearBasket}
           className="bg-red-600 text-white px-4 py-2 rounded mb-4 lg:mb-0"
         >
-          Clear Cart
+          Clear Basket
         </button>
 
         <div className="text-lg lg:text-xl text-primary font-bold">

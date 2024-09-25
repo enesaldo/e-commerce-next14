@@ -41,7 +41,7 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
         <div className="flex gap-6">
           <button
             onClick={() => addToBasket(product)}
-            className="text-orange-800 border hover:border-white border-orange-800 duration-100 hover:bg-orange-500 bg-orange-200  hover:text-white mt-4 px-2 lg:text-lg text-xs lg:px-6 py-2 rounded"
+            className="text-orange-800 border duration-100 hover:bg-orange-500 bg-primary hover:text-white mt-4 px-2 lg:text-lg text-xs lg:px-6 py-2 rounded"
           >
             Add to Basket
           </button>

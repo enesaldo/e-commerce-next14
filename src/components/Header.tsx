@@ -116,10 +116,10 @@ export default function Header() {
         >
           <FontAwesomeIcon
             icon={faBasketShopping}
-            className="text-white h-8 lg:w-12 w-max"
+            className="text-white h-8 lg:w-12 w-full"
           />
           {itemCount > 0 && (
-            <span className="absolute lg:-top-1 top-0 -right-1  rounded-full text-sm bg-orange-700 text-white  px-1">
+            <span className="absolute lg:-top-1 top-0 -right-1 rounded-full text-sm bg-orange-700 text-white  px-1">
               {itemCount}
             </span>
           )}
