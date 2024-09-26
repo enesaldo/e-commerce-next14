@@ -6,10 +6,7 @@ export type Product = {
   category: string;
   image: string;
   thumbnail: string;
-  rating: {
-    rate: number;
-    count: number;
-  };
+  rating: number;
 };
 
 export type SearchProps = {
