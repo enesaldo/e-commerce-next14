@@ -19,17 +19,17 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
 
   return (
     <div className="p-6 flex flex-col lg:flex-row">
-      <div className="w-full  ">
+      <div className="w-1/2  ">
         <div className=" lg:ml-14  m-0">
           <Breadcrumb category={category} productName={product.title} />
         </div>
 
         <Image
-          width={100}
-          height={100}
+          width={1000}
+          height={1000}
           src={product.thumbnail}
           alt={product.title}
-          className="object-cover w-full"
+          className="object-contain w-full"
         />
       </div>
       <div className="space-y-6 mt-10">

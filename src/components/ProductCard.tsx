@@ -11,32 +11,36 @@ export default function ProductCard({ product }: { product: Product }) {
   const { addToBasket } = useContext(BasketContext);
 
   return (
-    <div
-      className="
-    rounded-lg p-4 flex flex-col hover:shadow-xl  border bg-white"
-    >
-      <Link href={`/product/${product.id}`}>
-        <div>
-          <Image
-            height={100}
-            width={100}
-            src={product.thumbnail}
-            alt={product.title}
-            className="h-full object-contain w-full  mb-4"
-          />
-          <h2 className="text-lg font-semibold  h-20 truncate">
+    <div className="hover:shadow-xl  rounded-lg">
+      <div
+        className="
+  rounded-t-lg p-4 flex flex-col  bg-slate-100"
+      >
+        <Link href={`/product/${product.id}`}>
+          <div>
+            <Image
+              height={50}
+              width={450}
+              src={product.thumbnail}
+              alt={product.title}
+              className=" object-contain w-full  mb-4"
+            />
+          </div>
+        </Link>
+      </div>
+      <div className="flex py-4 mx-2 justify-between space-y-2 flex-col">
+        <div className="flex flex-row justify-between items-center  w-full">
+          <span className="text-sm font-semibold  truncate">
             {product.title}
-          </h2>
+          </span>
+          <p className="text-gray-500">{currencyFormatter(product.price)}</p>
         </div>
-      </Link>
-      <div className="flex justify-between items-center">
-        <p className="text-gray-500">{currencyFormatter(product.price)}</p>
 
         <button
           onClick={() => addToBasket(product)}
-          className="bg-orange-800 hover:bg-orange-700 w-8 h-8 text-white "
+          className="text-primary text-sm hover:bg-primary duration-100 border-primary border w-max p-2 rounded-full hover:text-white "
         >
-          +
+          Add To Cart
         </button>
       </div>
     </div>
