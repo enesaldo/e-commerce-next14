@@ -24,7 +24,7 @@ export default function Header() {
   const [isHovering, setIsHovered] = useState(false);
 
   const { basket } = useContext(BasketContext);
-  const itemCount = basket.reduce((total, item) => total + item.quantity, 0);
+  const itemCount = basket.length;
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -119,7 +119,7 @@ export default function Header() {
             className="text-white h-8 lg:w-12 w-full"
           />
           {itemCount > 0 && (
-            <span className="absolute lg:-top-1 top-0 -right-1 rounded-full text-sm bg-orange-700 text-white  px-1">
+            <span className="absolute lg:-top-1 top-0 -right-1 rounded-full text-sm bg-orange-700 text-white w-6 h-6 items-center justify-center flex">
               {itemCount}
             </span>
           )}
