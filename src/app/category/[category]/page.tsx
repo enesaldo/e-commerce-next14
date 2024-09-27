@@ -1,6 +1,7 @@
 import { ProductsByCategoryFetcher } from "../../../lib/ProductsByCategoryFetcher";
 import { Product } from "@/lib/types";
 import ProductCard from "@/components/ProductCard";
+import { notFound } from "next/navigation";
 
 type CategoryPageProps = {
   params: {
@@ -13,6 +14,9 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   const products = await ProductsByCategoryFetcher(category);
 
+  if (!products || products.length === 0) {
+    notFound();
+  }
   return (
     <div className="container mx-auto lg:py-4 p-6">
       <div className=" w-full shadow-lg h-16 items-center flex bg-white flex-row my-8 text-center ">
