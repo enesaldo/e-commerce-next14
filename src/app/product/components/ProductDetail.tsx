@@ -4,9 +4,11 @@ import Link from "next/link";
 import { BasketContext } from "../../../context/BasketContext";
 import { Product } from "../../../lib/types";
 import Image from "next/image";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { currencyFormatter } from "../../../utils";
 import Breadcrumb from "../components/BreadCrumb";
+import { ProductsByCategoryFetcher } from "../../../lib/ProductsByCategoryFetcher";
+import ProductCard from "@/components/ProductCard";
 
 interface ProductDetailProps {
   product: Product;
@@ -14,44 +16,66 @@ interface ProductDetailProps {
 
 const ProductDetail = ({ product }: ProductDetailProps) => {
   const { addToBasket } = useContext(BasketContext);
-
+  const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
   const category = product.category || "Unknown";
 
-  return (
-    <div className="p-6 flex flex-col lg:flex-row">
-      <div className="w-1/2  ">
-        <div className=" lg:ml-14  m-0">
-          <Breadcrumb category={category} productName={product.title} />
-        </div>
+  useEffect(() => {
+    const getRelatedProducts = async () => {
+      const products = await ProductsByCategoryFetcher(
+        product.category,
+        product.id
+      );
+      setRelatedProducts(products);
+    };
 
-        <Image
-          width={1000}
-          height={1000}
-          src={product.thumbnail}
-          alt={product.title}
-          className="object-contain w-full"
-        />
+    getRelatedProducts();
+  }, [product.category, product.id]);
+
+  return (
+    <div className=" flex flex-col">
+      <div className="p-6 flex flex-col lg:flex-row">
+        <div className="w-1/2  ">
+          <div className=" lg:ml-14  m-0">
+            <Breadcrumb category={category} productName={product.title} />
+          </div>
+
+          <Image
+            width={1000}
+            height={1000}
+            src={product.thumbnail}
+            alt={product.title}
+            className="object-contain w-full"
+          />
+        </div>
+        <div className="space-y-6 mt-10">
+          <h1 className="text-3xl font-bold mt-4">{product.title}</h1>
+          <p className="mt-4">{product.description}</p>
+          <p className="text-xl text-primary font-semibold mt-2">
+            {currencyFormatter(product.price)}
+          </p>
+          <div className="flex gap-6">
+            <button
+              onClick={() => addToBasket(product)}
+              className="text-orange-800 border duration-100 hover:bg-orange-500 bg-primary hover:text-white mt-4 px-2 lg:text-lg text-xs lg:px-6 py-2 rounded"
+            >
+              Add to Basket
+            </button>
+            <Link
+              href={"/basket"}
+              onClick={() => addToBasket(product)}
+              className="bg-primary hover:bg-orange-600 duration-100  text-white mt-4 px-2 lg:text-lg text-xs lg:px-6 py-2 rounded"
+            >
+              Purchase Now
+            </Link>
+          </div>
+        </div>
       </div>
-      <div className="space-y-6 mt-10">
-        <h1 className="text-3xl font-bold mt-4">{product.title}</h1>
-        <p className="mt-4">{product.description}</p>
-        <p className="text-xl text-primary font-semibold mt-2">
-          {currencyFormatter(product.price)}
-        </p>
-        <div className="flex gap-6">
-          <button
-            onClick={() => addToBasket(product)}
-            className="text-orange-800 border duration-100 hover:bg-orange-500 bg-primary hover:text-white mt-4 px-2 lg:text-lg text-xs lg:px-6 py-2 rounded"
-          >
-            Add to Basket
-          </button>
-          <Link
-            href={"/basket"}
-            onClick={() => addToBasket(product)}
-            className="bg-primary hover:bg-orange-600 duration-100  text-white mt-4 px-2 lg:text-lg text-xs lg:px-6 py-2 rounded"
-          >
-            Purchase Now
-          </Link>
+      <div className="my-10 mx-auto container">
+        <h2 className="text-2xl font-bold mb-4">Related Products</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4">
+          {relatedProducts.map((relatedProduct) => (
+            <ProductCard key={relatedProduct.id} product={relatedProduct} />
+          ))}
         </div>
       </div>
     </div>
