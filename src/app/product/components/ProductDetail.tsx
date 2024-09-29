@@ -44,10 +44,10 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
               smallImage: {
                 alt: product.title,
                 isFluidWidth: true,
-                src: product.thumbnail,
+                src: product.images,
               },
               largeImage: {
-                src: product.thumbnail,
+                src: product.images,
                 width: 1200,
                 height: 1200,
               },
