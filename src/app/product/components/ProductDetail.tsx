@@ -9,6 +9,7 @@ import { currencyFormatter } from "../../../utils";
 import Breadcrumb from "../components/BreadCrumb";
 import { ProductsByCategoryFetcher } from "../../../lib/ProductsByCategoryFetcher";
 import ProductCard from "@/components/ProductCard";
+import ReactImageMagnify from "react-image-magnify";
 
 interface ProductDetailProps {
   product: Product;
@@ -38,13 +39,23 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
           <div className=" lg:ml-14  m-0">
             <Breadcrumb category={category} productName={product.title} />
           </div>
-
-          <Image
-            width={1000}
-            height={1000}
-            src={product.thumbnail}
-            alt={product.title}
-            className="object-contain w-full"
+          <ReactImageMagnify
+            {...{
+              smallImage: {
+                alt: product.title,
+                isFluidWidth: true,
+                src: product.thumbnail,
+              },
+              largeImage: {
+                src: product.thumbnail,
+                width: 1200,
+                height: 1200,
+              },
+              enlargedImageContainerDimensions: {
+                width: "200%",
+                height: "100%",
+              },
+            }}
           />
         </div>
         <div className="space-y-6 mt-10">
@@ -70,9 +81,9 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
           </div>
         </div>
       </div>
-      <div className="my-10 mx-auto container">
+      <div className="my-10 mx-auto container lg:p-0 p-4">
         <h2 className="text-2xl font-bold mb-4">Related Products</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4">
           {relatedProducts.map((relatedProduct) => (
             <ProductCard key={relatedProduct.id} product={relatedProduct} />
           ))}
