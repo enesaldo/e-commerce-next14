@@ -17,6 +17,8 @@ interface ProductDetailProps {
 
 const ProductDetail = ({ product }: ProductDetailProps) => {
   const { addToBasket } = useContext(BasketContext);
+
+  const [mainImage, setMainImage] = useState(product.images[0]);
   const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
   const category = product.category || "Unknown";
 
@@ -33,21 +35,22 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
   }, [product.category, product.id]);
 
   return (
-    <div className=" flex flex-col">
+    <div className="flex flex-col">
       <div className="p-6 flex flex-col lg:flex-row">
-        <div className="w-1/2  ">
-          <div className=" lg:ml-14  m-0">
+        <div className="w-1/2">
+          <div className="lg:ml-14 m-0">
             <Breadcrumb category={category} productName={product.title} />
           </div>
+
           <ReactImageMagnify
             {...{
               smallImage: {
                 alt: product.title,
                 isFluidWidth: true,
-                src: product.images,
+                src: mainImage,
               },
               largeImage: {
-                src: product.images,
+                src: mainImage,
                 width: 1200,
                 height: 1200,
               },
@@ -57,13 +60,29 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
               },
             }}
           />
+
+          <div className="grid grid-cols-3 gap-2 mt-4">
+            {product.images?.map((image, index) => (
+              <Image
+                key={index}
+                src={image}
+                alt={`Product Image ${index}`}
+                width={100}
+                height={100}
+                className="object-cover cursor-pointer"
+                onClick={() => setMainImage(image)}
+              />
+            ))}
+          </div>
         </div>
+
         <div className="space-y-6 mt-10">
           <h1 className="text-3xl font-bold mt-4">{product.title}</h1>
           <p className="mt-4">{product.description}</p>
           <p className="text-xl text-primary font-semibold mt-2">
             {currencyFormatter(product.price)}
           </p>
+
           <div className="flex gap-6">
             <button
               onClick={() => addToBasket(product)}
@@ -81,6 +100,7 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
           </div>
         </div>
       </div>
+
       <div className="my-10 mx-auto container lg:p-0 p-4">
         <h2 className="text-2xl font-bold mb-4">Related Products</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4">
