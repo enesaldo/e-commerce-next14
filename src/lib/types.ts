@@ -7,6 +7,7 @@ export type Product = {
   images: string[];
   thumbnail: string;
   rating: number;
+  total: number;
 };
 
 export type SearchProps = {

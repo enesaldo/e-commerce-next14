@@ -35,7 +35,7 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
   }, [product.category, product.id]);
 
   return (
-    <div className="flex flex-col">
+    <div className="flex mx-auto container flex-col">
       <div className="p-6 flex flex-col lg:flex-row">
         <div className="w-1/2">
           <div className="lg:ml-14 m-0">
@@ -101,7 +101,7 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
         </div>
       </div>
 
-      <div className="my-10 mx-auto container lg:p-0 p-4">
+      <div className="my-10  lg:p-0 p-4">
         <h2 className="text-2xl font-bold mb-4">Related Products</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4">
           {relatedProducts.map((relatedProduct) => (
