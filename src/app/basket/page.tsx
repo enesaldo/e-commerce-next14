@@ -8,7 +8,7 @@ import { currencyFormatter } from "../../utils";
 
 import Link from "next/link";
 
-const CartPage = () => {
+const BasketPage = () => {
   const { basket, removeFromBasket, clearBasket, updateQuantity } =
     useContext(BasketContext);
 
@@ -134,4 +134,4 @@ const CartPage = () => {
   );
 };
 
-export default CartPage;
+export default BasketPage;
