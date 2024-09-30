@@ -18,14 +18,13 @@ export async function fetchProducts(
     throw new Error("Failed to fetch products");
   }
 }
-
 export async function fetchProduct(id: string | number) {
-  const response = await fetch(`https://dummyjson.com/products/${id}`);
-  if (!response.ok) {
-    throw new Error("Product not found.");
+  try {
+    const response = await axios.get(`https://dummyjson.com/products/${id}`);
+    return response.data;
+  } catch (error) {
+    throw new Error("Product Not Found");
   }
-  const product = await response.json();
-  return product;
 }
 
 export async function searchProducts(query: string): Promise<Product[]> {
