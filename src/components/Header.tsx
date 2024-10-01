@@ -72,6 +72,7 @@ export default function Header() {
             href="/"
           >
             <Image
+              unoptimized
               src="/logo.svg"
               alt="Logo"
               width={40}

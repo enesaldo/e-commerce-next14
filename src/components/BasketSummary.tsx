@@ -34,6 +34,7 @@ const BasketSummary = () => {
           >
             <div>
               <Image
+                unoptimized
                 height={100}
                 width={100}
                 src={item.thumbnail}

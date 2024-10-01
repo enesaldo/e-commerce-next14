@@ -64,6 +64,7 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
           <div className="grid grid-cols-3 gap-2 mt-4">
             {product.images?.map((image, index) => (
               <Image
+                unoptimized
                 key={index}
                 src={image}
                 alt={`Product Image ${index}`}

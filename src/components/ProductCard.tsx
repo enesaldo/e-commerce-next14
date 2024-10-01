@@ -21,6 +21,7 @@ export default function ProductCard({ product }: { product: Product }) {
         <Link href={`/product/${product.id}`}>
           <div>
             <Image
+              unoptimized
               height={50}
               width={450}
               src={product.thumbnail}
