@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 type PaginationProps = {
   currentPage: number;
   totalPages: number;
@@ -15,18 +17,18 @@ export default function Pagination({
 
   return (
     <div className="flex justify-center items-center space-x-2 mt-6 overflow-x-auto">
-      <a
+      <Link
         href={`/?page=${currentPage - 1}`}
         className={`px-3 py-1 lg:text-sm text-xs bg-orange-500 text-white rounded ${
           currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""
         }`}
       >
         Previous
-      </a>
+      </Link>
 
       <div className="flex space-x-1 overflow-x-auto">
         {pageNumbers.map((number) => (
-          <a
+          <Link
             key={number}
             href={`/?page=${number}`}
             className={`px-3 py-1 text-sm rounded ${
@@ -36,18 +38,18 @@ export default function Pagination({
             }`}
           >
             {number}
-          </a>
+          </Link>
         ))}
       </div>
 
-      <a
+      <Link
         href={`/?page=${currentPage + 1}`}
         className={`px-3 py-1 lg:text-sm text-xs bg-orange-500 text-white rounded ${
           currentPage === totalPages ? "opacity-50 cursor-not-allowed" : ""
         }`}
       >
         Next
-      </a>
+      </Link>
     </div>
   );
 }
