@@ -109,19 +109,19 @@ export default function Header() {
         </div>
 
         <Link
-          className="  row-start-1  lg:row-auto flex w-fit ml-auto relative"
+          href="/basket"
+          className="row-start-1  lg:row-auto flex w-fit ml-auto relative"
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
-          href="/basket"
         >
           <FontAwesomeIcon
             icon={faBasketShopping}
             className="text-white h-8 lg:w-12 w-full"
           />
           {itemCount > 0 && (
-            <span className="absolute lg:-top-1 top-0 -right-1 rounded-full text-sm bg-orange-700 text-white w-6 h-6 items-center justify-center flex">
+            <div className="absolute lg:-top-1 top-0 -right-1 rounded-full text-sm bg-orange-700 text-white w-6 h-6 items-center justify-center flex">
               {itemCount}
-            </span>
+            </div>
           )}
           {isHovering ? <BasketSummary /> : ""}
         </Link>

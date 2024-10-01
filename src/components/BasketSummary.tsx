@@ -20,9 +20,11 @@ const BasketSummary = () => {
 
   return (
     <div className="lg:block hidden py-6 max-h-80 shadow-lg w-80 bg-white text-slate-500 container mx-auto  top-10 right-0 overflow-y-auto z-50 absolute ">
-      <h1 className="text-lg font-bold mb-6 justify-center flex">
-        Recently Added Products
-      </h1>
+      <div>
+        <h1 className="text-lg font-bold mb-6 justify-center flex">
+          Recently Added Products
+        </h1>
+      </div>
 
       <div className="mt-4 ">
         {basket.map((item) => (
@@ -52,9 +54,8 @@ const BasketSummary = () => {
       <div className="flex justify-center mt-8  ">
         <Link
           className=" bg-primary p-2 rounded hover:bg-orange-700 duration-100 text-white w-max"
-          href={"/basket"}
+          href="/basket"
         >
-          {" "}
           View My Shopping Cart
         </Link>
       </div>
